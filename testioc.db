@@ -1,0 +1,23 @@
+# An epics soft ioc DB for taurus-epics testing
+record(ao,"XXX:a"){
+  field(DTYP,"Soft Channel")
+  field(VAL,0)
+  field(UDF,1)
+  field(FLNK,"XXX:sum")
+}
+record(ao,"XXX:b"){
+  field(DTYP,"Soft Channel")
+  field(VAL,0)
+  field(UDF,1)
+  field(FLNK,"XXX:sum")
+}
+record(calc,"XXX:sum"){
+  field(INPA,"XXX:a")
+  field(INPB,"XXX:b")
+  field(CALC,"A+B")
+}
+record(calc, "XXX:random"){
+  field(SCAN, "1 second")
+  field(INPA, "XXX:a")
+  field(CALC, "RNDM*A")
+}
