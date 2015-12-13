@@ -1,5 +1,11 @@
 FROM debian:stable
 
+# add EPICS repo and repo-key
+ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
+RUN apt-key add repo-key.pub
+ADD epics.list /etc/apt/sources.d/
+
+# Update the repo info
 RUN apt-get update
 
 # install and configure supervisor
@@ -23,7 +29,7 @@ RUN apt-get install -y mysql-server
 #install tango-db
 RUN apt-get install -y tango-db
 
-#install tango-db
+#install tango-test DS
 RUN apt-get install -y tango-test
 
 # install sardana dependencies
@@ -45,8 +51,18 @@ COPY supervisord.conf /etc/supervisor/conf.d/
 ADD tangodbsardemo.tar /var/lib/mysql/
 RUN chown -R mysql /var/lib/mysql/tango
 
-# define tanago host env var
+# define tango host env var
 ENV TANGO_HOST=taurus-test:10000
+
+# install epics
+RUN apt-get install -y epics-dev
+
+# install pyepics
+RUN easy_install -U pyepics
+
+# copy and run test epics IOC
+ADD testioc.db /
+# TODO: run "softIoc -d testioc.db" *in the background*
 
 # start supervisor as deamon
 CMD ["/usr/bin/supervisord"]
