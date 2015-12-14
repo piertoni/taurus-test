@@ -34,7 +34,7 @@ RUN apt-get install -y tango-test
 
 # install sardana dependencies
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
-                       python-nxs python-ply python-pytango python-qt4\
+                       python-nxs python-ply python-pytango python-qt4\ 
                        python-qwt5-qt4 python-spyderlib
 
 # instal virtual monitor
