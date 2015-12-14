@@ -60,9 +60,12 @@ RUN apt-get install -y epics-dev
 # install pyepics
 RUN easy_install -U pyepics
 
-# copy and run test epics IOC
+# copy and run test epics IOC in the background
+RUN apt-get install -y screen
 ADD testioc.db /
-# TODO: run "softIoc -d testioc.db" *in the background*
+ADD startioc /
+RUN chmod 755 startioc
+RUN screen -d -m startioc
 
 # start supervisor as deamon
 CMD ["/usr/bin/supervisord"]
