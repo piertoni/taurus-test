@@ -3,7 +3,7 @@ FROM debian:stable
 # add EPICS repo and repo-key
 ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
 RUN apt-key add repo-key.pub
-ADD epics.list /etc/apt/sources.d/
+ADD epics.list /etc/apt/sources.list.d/
 
 # Update the repo info
 RUN apt-get update
