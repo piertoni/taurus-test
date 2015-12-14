@@ -1,2 +1,2 @@
 # sardana-test
-Docker image configuration for sardana tests
+Docker image configuration for Taurus tests
