@@ -60,10 +60,11 @@ RUN apt-get install -y epics-dev
 # install pyepics
 RUN easy_install -U pyepics
 
-# copy and run test epics IOC in the background
+# copy test epics IOC database
 ADD testioc.db /
-# ADD startioc /
 
+# add USER ENV (necessary for spyderlib in taurus.qt.qtgui.editor)
+ENV USER=root
 
 # start supervisor as deamon
 CMD ["/usr/bin/supervisord"]
