@@ -44,14 +44,14 @@ Note: this image does not contain taurus itself (since it is designed for instal
   ~~~~
   git clone -b develop http://git.code.sf.net/p/tauruslib/taurus.git
   cd taurus
-  python setup.py build --no-doc install --no-doc
+  python setup.py install
   ~~~~
 
 - Example 3: using pip to do the same as in example 2:
  
   ~~~~
   apt-get install python-pip -y
-  pip install git+http://git.code.sf.net/p/tauruslib/taurus.git@develop --egg
+  pip install git+http://git.code.sf.net/p/tauruslib/taurus.git@develop
   ~~~~
   
 
