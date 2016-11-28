@@ -42,7 +42,7 @@ Note: this image does not contain taurus itself (since it is designed for instal
 - Example 2: installing the latest develop version from the git repo (you may use any other branch instead of develop):
   
   ~~~~
-  git clone -b develop http://git.code.sf.net/p/tauruslib/taurus.git
+  git clone -b develop https://github.com/taurus-org/taurus.git
   cd taurus
   python setup.py install
   ~~~~
@@ -51,7 +51,7 @@ Note: this image does not contain taurus itself (since it is designed for instal
  
   ~~~~
   apt-get install python-pip -y
-  pip install git+http://git.code.sf.net/p/tauruslib/taurus.git@develop
+  pip install git+https://github.com/taurus-org/taurus.git@develop
   ~~~~
   
 
