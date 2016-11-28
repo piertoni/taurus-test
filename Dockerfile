@@ -37,8 +37,11 @@ RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\
                        python-nxs python-ply python-pytango python-qt4\ 
                        python-qwt5-qt4 python-guiqwt pymca
 
+# install pip
+RUN apt-get install -y python-pip
+
 # install spyder V3 from pypi
-RUN easy_install -U spyder
+RUN pip install spyder==3
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
@@ -61,7 +64,7 @@ ENV TANGO_HOST=taurus-test:10000
 RUN apt-get install -y epics-dev
 
 # install pyepics
-RUN easy_install -U pyepics
+RUN pip install pyepics
 
 # copy test epics IOC database
 ADD testioc.db /
