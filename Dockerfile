@@ -36,8 +36,9 @@ RUN apt-get install -y tango-test
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
                        python-nxs python-ply python-pytango python-qt4\ 
                        python-qwt5-qt4 python-guiqwt pymca
+
 # install spyder V3 from pypi
-RUN pip install spyder
+RUN easy_install -U spyder
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
