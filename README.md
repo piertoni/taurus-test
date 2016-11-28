@@ -9,7 +9,7 @@ It is based on a [Debian](http://www.debian.org) stable and it provides the foll
 - A Tango DB and TangoTest DS configured and running for testing taurus-tango
 - A basic Epics system and a running SoftIoc for testing taurus-epics
  
-The primary use of this Docker image is to use it in our [Continuous Integration workflow](https://travis-ci.org/cpascual/taurus).
+The primary use of this Docker image is to use it in our [Continuous Integration workflow](https://travis-ci.org/taurus-org/taurus).
 
 But you may also run it on your own machine:
 
@@ -30,7 +30,7 @@ Then you can log into the container with:
 docker exec -it taurus-test bash
 ~~~~
 
-Note: this image does not contain taurus itself (since it is designed for installing development versions of taurus) but you can install it easilly using any of the following examples **from your container** (for more details, see http://www.taurus-scada.org/en/stable/users/getting_started.html).:
+Note: this image does not contain taurus itself (since it is designed for installing development versions of taurus) but you can install it easilly using any of the following examples **from your container** (for more details, see http://www.taurus-scada.org/users/getting_started.html).:
 
 
 - Example 1: installing taurus from the official debian repo.
