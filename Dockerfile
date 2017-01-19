@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stretch
 
 # add EPICS repo and repo-key
 ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
@@ -34,8 +34,8 @@ RUN apt-get install -y tango-test
 
 # install sardana dependencies
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
-                       python-nxs python-ply python-pytango python-qt4\ 
-                       python-qwt5-qt4 python-spyderlib
+                       python-nxs python-ply python-tango python-qt4\ 
+                       python-guiqwt python-spyder
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
