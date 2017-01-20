@@ -30,7 +30,7 @@ RUN apt-get install -y tango-test
 # install taurus dependencies
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
                        python-nxs python-ply python-tango python-qt4\ 
-                       python-guiqwt python-spyder python-qwt5-qt4
+                       python-qwt5-qt4 python-guiqwt python-pymca5 python-spyder 
 
 # install some utilities
 RUN apt-get install -y git python-pip vim
@@ -62,7 +62,7 @@ RUN apt-get update
 RUN apt-get install -y epics-dev
 
 # install pyepics
-RUN easy_install -U pyepics
+RUN pip install pyepics
 
 # copy test epics IOC database
 ADD testioc.db /
