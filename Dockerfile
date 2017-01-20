@@ -19,7 +19,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # RUN echo "exit 0" > /usr/sbin/policy-rc.d
 
 # install mysql server
-RUN apt-get install -y mysql-server
+RUN apt-get install -y default-mysql-server
 
 #install tango-db
 RUN apt-get install -y tango-db
