@@ -30,7 +30,7 @@ RUN apt-get install -y tango-test
 # install sardana dependencies
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
                        python-nxs python-ply python-tango python-qt4\ 
-                       python-guiqwt python-spyder
+                       python-guiqwt python-spyder python-qwt5-qt4
 
 # install some utilities
 RUN apt-get install -y git python-pip vim
