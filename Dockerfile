@@ -1,10 +1,5 @@
 FROM debian:stretch
 
-# add EPICS repo and repo-key
-#ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
-#RUN apt-key add repo-key.pub
-#ADD epics.list /etc/apt/sources.list.d/
-
 # Update the repo info
 RUN apt-get update
 
@@ -37,6 +32,9 @@ RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\
                        python-nxs python-ply python-tango python-qt4\ 
                        python-guiqwt python-spyder
 
+# install some utilities
+RUN apt-get install -y git python-pip vim
+
 # instal virtual monitor
 RUN apt-get install -y xvfb
 
@@ -54,14 +52,21 @@ RUN chown -R mysql /var/lib/mysql/tango
 # define tango host env var
 ENV TANGO_HOST=taurus-test:10000
 
+# add EPICS repo and repo-key
+ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
+RUN apt-get install -y gnupg
+RUN apt-key add repo-key.pub
+ADD epics.list /etc/apt/sources.list.d/
+RUN apt-get update
+
 # install epics
-#RUN apt-get install -y epics-dev
+RUN apt-get install -y epics-dev
 
 # install pyepics
-#RUN easy_install -U pyepics
+RUN easy_install -U pyepics
 
 # copy test epics IOC database
-#ADD testioc.db /
+ADD testioc.db /
 
 # add USER ENV (necessary for spyderlib in taurus.qt.qtgui.editor)
 ENV USER=root
