@@ -27,7 +27,7 @@ RUN apt-get install -y tango-db
 #install tango-test DS
 RUN apt-get install -y tango-test
 
-# install sardana dependencies
+# install taurus dependencies
 RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
                        python-nxs python-ply python-tango python-qt4\ 
                        python-guiqwt python-spyder python-qwt5-qt4
@@ -44,9 +44,8 @@ ENV DISPLAY=:1.0
 # configure supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/
 
-# TODO: use just basic database, not the one with sardemo
-# copy & untar mysql tango database (with sardemo) and change owner to mysql user
-ADD tangodbsardemo.tar /var/lib/mysql/
+# copy & untar mysql tango database and change owner to mysql user
+ADD tangodb-tiny.tar /var/lib/mysql/
 RUN chown -R mysql /var/lib/mysql/tango
 
 # define tango host env var
