@@ -36,6 +36,7 @@ Note: this image does not contain taurus itself (since it is designed for instal
 - Example 1: installing taurus from the official debian repo.
   
   ~~~~
+  apt-get update
   apt-get install python-taurus -y
   ~~~~
 
