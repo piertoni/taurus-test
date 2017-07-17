@@ -28,12 +28,25 @@ RUN apt-get install -y tango-db
 RUN apt-get install -y tango-test
 
 # install taurus dependencies
-RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
-                       python-nxs python-ply python-tango python-qt4\ 
-                       python-qwt5-qt4 python-guiqwt python-pymca5 python-spyder 
+RUN apt-get install -y python-numpy \
+                       python-enum34 \
+                       python-guiqwt \
+                       python-h5py \
+                       python-lxml \
+                       python-pint \
+                       python-ply \
+                       python-pytango \
+                       python-qt4 \
+                       python-qwt5-qt4 \
+                       python-spyderlib \
+                       python-pymca5 \
+                       qt4-designer
 
 # install some utilities
-RUN apt-get install -y git python-pip vim
+RUN apt-get install -y git \
+                       python-pip \
+                       vim \
+                       ipython
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
@@ -51,21 +64,22 @@ RUN chown -R mysql /var/lib/mysql/tango
 # define tango host env var
 ENV TANGO_HOST=taurus-test:10000
 
+# Disabling the epics support until we manage to install epics in debian stretch
 # add EPICS repo and repo-key
-ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
-RUN apt-get install -y gnupg
-RUN apt-key add repo-key.pub
-ADD epics.list /etc/apt/sources.list.d/
-RUN apt-get update
+# ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
+# RUN apt-get install -y gnupg
+# RUN apt-key add repo-key.pub
+# ADD epics.list /etc/apt/sources.list.d/
+# RUN apt-get update
 
 # install epics
-RUN apt-get install -y epics-dev
+# RUN apt-get install -y epics-dev
 
 # install pyepics
-RUN pip install pyepics
+# RUN pip install pyepics
 
 # copy test epics IOC database
-ADD testioc.db /
+# ADD testioc.db /
 
 # add USER ENV (necessary for spyderlib in taurus.qt.qtgui.editor)
 ENV USER=root
