@@ -65,8 +65,8 @@ RUN chown -R mysql /var/lib/mysql/tango
 ENV TANGO_HOST=taurus-test:10000
 
 # add EPICS repo 
-ADD epicsdebs /
-ADD epics.list /etc/apt/sources.list.d/
+COPY epicsdebs /epicsdebs
+COPY epics.list /etc/apt/sources.list.d/
 RUN apt-get update
 
 # install epics
