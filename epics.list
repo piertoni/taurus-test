@@ -1,1 +1,1 @@
-deb http://epics.nsls2.bnl.gov/debian/ jessie/staging main contrib
+deb [ trusted=yes ] file:/epicsdebs ./

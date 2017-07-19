@@ -64,22 +64,19 @@ RUN chown -R mysql /var/lib/mysql/tango
 # define tango host env var
 ENV TANGO_HOST=taurus-test:10000
 
-# Disabling the epics support until we manage to install epics in debian stretch
-# add EPICS repo and repo-key
-# ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
-# RUN apt-get install -y gnupg
-# RUN apt-key add repo-key.pub
-# ADD epics.list /etc/apt/sources.list.d/
-# RUN apt-get update
+# add EPICS repo 
+ADD epicsdebs /
+ADD epics.list /etc/apt/sources.list.d/
+RUN apt-get update
 
 # install epics
-# RUN apt-get install -y epics-dev
+RUN apt-get install -y epics-dev
 
 # install pyepics
-# RUN pip install pyepics
+RUN pip install pyepics
 
 # copy test epics IOC database
-# ADD testioc.db /
+ADD testioc.db /
 
 # add USER ENV (necessary for spyderlib in taurus.qt.qtgui.editor)
 ENV USER=root
