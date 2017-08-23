@@ -1,4 +1,4 @@
-# taurus-test
+# taurus-test (with debian stretch)
 
 [Docker](http://www.docker.com) image configuration for testing [Taurus](http://www.taurus-scada.org).
 
@@ -14,20 +14,20 @@ The primary use of this Docker image is to use it in our [Continuous Integration
 But you may also run it on your own machine:
 
 ~~~~
-docker run -d --name=taurus-test -h taurus-test cpascual/taurus-test:debian9
+docker run -d --name=taurus-stretch -h taurus-test cpascual/taurus-test:debian-stretch
 ~~~~
 
 ... or, if you want to launch GUI apps from the container **and do not mind about X security**:
 
 ~~~~
 xhost +local:
-docker run -d --name=taurus-test -h taurus-test -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix cpascual/taurus-test:debian9
+docker run -d --name=taurus-stretch -h taurus-test -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix cpascual/taurus-test:debian-stretch
 ~~~~
 
 Then you can log into the container with:
 
 ~~~~
-docker exec -it taurus-test bash
+docker exec -it taurus-stretch bash
 ~~~~
 
 Note: this image does not contain taurus itself (since it is designed for installing development versions of taurus) but you can install it easilly using any of the following examples **from your container** (for more details, see http://www.taurus-scada.org/users/getting_started.html).:
