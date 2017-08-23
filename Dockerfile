@@ -37,13 +37,6 @@ RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\
                        python-nxs python-ply python-pytango python-qt4\ 
                        python-qwt5-qt4 python-guiqwt pymca
 
-# install pip
-RUN apt-get install -y python-pip
-
-# install spyder V3 from pypi (+ we need ipython 5.x from jessie-backports for this)
-RUN apt-get -t jessie-backports install -y ipython
-RUN pip install spyder==3
-
 # instal virtual monitor
 RUN apt-get install -y xvfb
 
@@ -60,6 +53,11 @@ RUN chown -R mysql /var/lib/mysql/tango
 
 # define tango host env var
 ENV TANGO_HOST=taurus-test:10000
+
+# install spyder V3 from pypi
+# (+ we need ipython 5.x from jessie-backports for this)
+RUN apt-get -t jessie-backports install -y ipython python-pip
+RUN pip install spyder
 
 # install epics
 RUN apt-get install -y epics-dev
