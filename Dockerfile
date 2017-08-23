@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:jessie
 
 # add EPICS repo and repo-key
 ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
