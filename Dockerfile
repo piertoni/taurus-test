@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 # Update the repo info
 RUN apt-get update
