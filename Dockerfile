@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie-backports
 
 # add EPICS repo and repo-key
 ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
@@ -40,7 +40,8 @@ RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\
 # install pip
 RUN apt-get install -y python-pip
 
-# install spyder V3 from pypi
+# install spyder V3 from pypi (+ we need ipython 5.x from jessie-backports for this)
+RUN apt-get -t jessie-backports install -y ipython
 RUN pip install spyder==3
 
 # instal virtual monitor
