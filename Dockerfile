@@ -59,6 +59,9 @@ ENV TANGO_HOST=taurus-test:10000
 RUN apt-get -t jessie-backports install -y ipython python-pip
 RUN pip install spyder
 
+# install qtpy from pypi
+RUN pip install qtpy
+
 # install epics
 RUN apt-get install -y epics-dev
 
