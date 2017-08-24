@@ -1,4 +1,4 @@
-FROM debian:jessie-backports
+FROM debian:jessie
 
 # add EPICS repo and repo-key
 ADD http://epics.nsls2.bnl.gov/debian/repo-key.pub repo-key.pub
@@ -33,9 +33,23 @@ RUN apt-get install -y tango-db
 RUN apt-get install -y tango-test
 
 # install sardana dependencies
-RUN apt-get install -y python ipython python-h5py python-lxml python-numpy\ 
-                       python-nxs python-ply python-pytango python-qt4\ 
-                       python-qwt5-qt4 python-guiqwt pymca
+RUN apt-get install -y python \
+                       python-lxml \
+                       python-numpy \
+                       python-ply \
+                       python-pytango \
+                       python-qt4 \
+                       python-qwt5-qt4 \
+                       python-guiqwt \
+                       pymca \
+                       python-h5py \
+                       ipython \
+                       ipython-qtconsole \
+                       python-nxs \
+                       python-pip
+
+# install qtpy from pypi
+RUN pip install qtpy
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
@@ -53,14 +67,6 @@ RUN chown -R mysql /var/lib/mysql/tango
 
 # define tango host env var
 ENV TANGO_HOST=taurus-test:10000
-
-# install spyder V3 from pypi
-# (+ we need ipython 5.x from jessie-backports for this)
-RUN apt-get -t jessie-backports install -y ipython python-pip
-RUN pip install spyder
-
-# install qtpy from pypi
-RUN pip install qtpy
 
 # install epics
 RUN apt-get install -y epics-dev
