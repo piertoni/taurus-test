@@ -41,7 +41,8 @@ RUN apt-get install -y python-numpy \
                        python-spyderlib \
                        python-pymca5 \
                        qt4-designer \
-                       python-sphinx-rtd-theme
+                       python-sphinx-rtd-theme \
+                       graphviz
 
 # install some utilities
 RUN apt-get install -y git \
