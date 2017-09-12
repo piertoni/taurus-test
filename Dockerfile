@@ -40,7 +40,8 @@ RUN apt-get install -y python-numpy \
                        python-qwt5-qt4 \
                        python-spyderlib \
                        python-pymca5 \
-                       qt4-designer
+                       qt4-designer \
+                       python-sphinx-rtd-theme
 
 # install some utilities
 RUN apt-get install -y git \
