@@ -46,7 +46,12 @@ RUN apt-get install -y python \
                        ipython \
                        ipython-qtconsole \
                        python-nxs \
-                       python-pip
+                       python-pip\
+                       python-sphinx-rtd-theme \
+                       graphviz
+
+# add sphinx_rtd_theme to the default list of available themes (needed in jessie)
+RUN ln -s /usr/lib/python2.7/dist-packages/sphinx_rtd_theme /usr/share/sphinx/themes/
 
 # install qtpy from pypi
 RUN pip install qtpy
