@@ -48,7 +48,8 @@ RUN apt-get install -y python-numpy \
 RUN apt-get install -y git \
                        python-pip \
                        vim \
-                       ipython
+                       ipython \
+                       procps
 
 # instal virtual monitor
 RUN apt-get install -y xvfb
