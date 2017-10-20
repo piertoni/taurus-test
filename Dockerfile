@@ -51,7 +51,8 @@ RUN apt-get install -y python \
                        python-nxs \
                        python-pip\
                        python-sphinx-rtd-theme \
-                       graphviz
+                       graphviz \
+                       python-pyqtgraph
 
 # add sphinx_rtd_theme to the default list of available themes (needed in jessie)
 RUN ln -s /usr/lib/python2.7/dist-packages/sphinx_rtd_theme /usr/share/sphinx/themes/
