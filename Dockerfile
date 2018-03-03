@@ -28,26 +28,49 @@ RUN apt-get install -y tango-db
 RUN apt-get install -y tango-test
 
 # install taurus dependencies
-RUN apt-get install -y python-numpy \
-                       python-enum34 \
-                       python-guiqwt \
-                       python-h5py \
-                       python-lxml \
-                       python-pint \
-                       python-ply \
-                       python-pytango \
-                       python-qt4 \
-                       python-qwt5-qt4 \
-                       python-spyderlib \
-                       python-pymca5 \
-                       qt4-designer \
-                       python-sphinx-rtd-theme \
-                       graphviz \
-                       python-pyqtgraph
+RUN apt-get install -y python3-numpy \ # OK
+                       #python-enum34 \ # non necessario
+                       python3-guiqwt \ # OK
+                       python3-h5py \   # OK
+                       python3-lxml \   # OK
+                       python3-pint \   # OK
+                       python3-ply \    # OK
+                       python3-pytango \# OK
+                       #python-qt4 \    # NON TROVATO installazione da sorgente
+                       python3-qtpy \    # Probabilmente non va bene
+                       python3-pip
+                       qt4-dev-tools # forse non serve
+                       libqt4-dev
+#----SIP ------
+#tar xvf sip...
+#cd sip
+#python3 configure.py
+#sudo make
+#sudo make install
+#---PyQt4------
+#tar xvf PyQt4
+#cd PyQt4
+#python3 configure.py
+#sudo make
+#sudo make install
+#
+
+# installazione sip
+
+#RUN apt-get install python-pip python-qt4
+RUN apt-get install
+                       #python-qwt5-qt4 \ # NON TROVATO, non c'è per python3
+                       python3-spyderlib \ # OK
+                       python3-pymca5 \ # OK
+                       qt4-designer \ # OK
+                       python-sphinx-rtd-theme \ # lasciato stare per ora
+                       graphviz # OK
+# DA QUA
+RUN pip3 install pyqtgraph # OK
 
 # install some utilities
 RUN apt-get install -y git \
-                       python-pip \
+                       python3-pip \
                        vim \
                        ipython \
                        procps
@@ -77,7 +100,7 @@ RUN apt-get update
 RUN apt-get install -y epics-dev
 
 # install pyepics
-RUN pip install pyepics
+RUN pip3 install pyepics
 
 # copy test epics IOC database
 ADD testioc.db /
